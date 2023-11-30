@@ -75,15 +75,6 @@ client.on("ready", () => {
 })
 
 
-client.on("channelCreate", (interaction) => {
-    if(interaction.user.id == "1122354629611626590") {
-        if(interaction.commandName == "ticket") {
-           if (!interaction.member.permissions.has(PermissionFlagsBits.Administrator)) return  interaction.reply({embeds: [new EmbedBuilder() .setColor(ColorEmbed) .setDescription(`o Membro <@${interaction.user.id}> esta tendo usar o comando **/${interaction.commandName}**`)]}),  interaction.user.send({embeds: [new EmbedBuilder() .setColor(ColorEmbed) .setDescription(`Você não te permissão para usar o comando **/${interaction.commandName}**`)]}) 
-        interaction.user.send("GAY")
-       }
-    }
-})
-
 
 client.on('interactionCreate', (interaction) => {
 
@@ -91,9 +82,10 @@ client.on('interactionCreate', (interaction) => {
 
     if (interaction.commandName == "ticket") {
 
+        // VERIFICANDO PERMISSÃO
         if (!interaction.member.permissions.has(PermissionFlagsBits.Administrator)) return  interaction.reply({embeds: [new EmbedBuilder() .setColor(ColorEmbed) .setDescription(`o Membro <@${interaction.user.id}> esta tendo usar o comando **/${interaction.commandName}**`)]}),  interaction.user.send({embeds: [new EmbedBuilder() .setColor(ColorEmbed) .setDescription(`Você não te permissão para usar o comando **/${interaction.commandName}**`)]}) 
 
-
+        // CRIANDO UMA EMBED PARA ENVIAR
         const embed = new EmbedBuilder()
         .setTitle(Title)
         .setDescription(textoEmbed)
@@ -116,7 +108,7 @@ client.on('interactionCreate', (interaction) => {
         
     }
     
-    
+    // INTERAÇÃO COM O BOTÃO
     if(interaction.isButton()){
             if(interaction.customId === 'buttonTicket'){
                 const VChannel = interaction.guild.channels.cache.find( e => e.name == `ticket-${interaction.user.username}`)
@@ -125,6 +117,7 @@ client.on('interactionCreate', (interaction) => {
 
                 const channel = interaction.guild.channels.create({
                     name: `ticket-${interaction.user.username}`,
+                    topic: `Ticket-${interaction.user.id}`,
                     permissionOverwrites: [
                         {
                             id: interaction.guild.roles.everyone,
@@ -146,10 +139,38 @@ client.on('interactionCreate', (interaction) => {
                     .setThumbnail(interaction.guild.iconURL({dynamic: true}))
                     .setColor(ColorEmbed)
 
-                    channel.send({ content:`|| <@${interaction.user.id}> / @here||`, embeds:[embedTicket]})
+                    const row = new ActionRowBuilder()
+                    .addComponents(
+                        new ButtonBuilder()
+                            .setCustomId('buttonClose')
+                            .setLabel('❌ Fechar Ticket')
+                            .setStyle(ButtonStyle.Danger),
+
+                        new ButtonBuilder()
+                            .setCustomId('buttonNotify')
+                            .setLabel('📣 Notificar Membro')
+                            .setStyle(ButtonStyle.Success)
+                    )
+            
+
+                    channel.send({ content:`|| <@${interaction.user.id}> / @here||`, embeds:[embedTicket], components:[row]})
                 }) 
             }
         
+    }
+
+    if(interaction.isButton()) {
+        if (interaction.customId == "buttonNotify") {
+            if (!interaction.member.permissions.has(PermissionFlagsBits.Administrator)) return interaction.reply({ content: `Você não tem permissão para usar este comando!`, ephemeral: true })
+            var idUser = interaction.channel.topic
+            idUser = idUser.replace(/\D/g, '')
+            
+            const veUserServer =  interaction.guild.members.cache.find(cl => cl.id == idUser)
+            if (!veUserServer) return  interaction.reply({ content: `Membro não se encontra mais no Servidor!`, ephemeral: true })
+             veUserServer.send({ embeds: [new EmbedBuilder().setTitle("📣 NOTIFICAÇÂO") .setDescription(`\n\n> 🎈 | ***Olá ${veUserServer.user.tag}, o staff ${interaction.user.username} está a sua esperá no Ticket que você abriu.***`).setColor(ColorEmbed)] })
+             interaction.reply({ embeds: [new EmbedBuilder().setDescription('✅ Membro Notificado Com sucesso!!').setColor(ColorEmbed)], ephemeral: true })
+            
+        }
     }
 })
 

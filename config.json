@@ -3,7 +3,7 @@
   "ColorEmbed": "#00eeff",
   "Title": "📣 Central de Atendimentos",
   "textoEmbed": " > **Horário de atendimento:** Segunda a Sexta(09h as 19h) Sábado (8h a 12hr)\n\n ***Podemos atender fora do horário estipulado***",
-  "textoEmbedTicket": "Olá",
+  "textoEmbedTicket": "> **Olá, um staff foi avisado sobre seu ticket**\n assim que poder alguém ira responder você \n\n***Por favor não mercione ninguem e nem cargo algum***",
   "Footer": "Todos Direitos Reservados",
   "imagemEmbed": "https://cdn.discordapp.com/attachments/1116886532704440371/1174879017497788427/cartas.gif?ex=65693259&is=6556bd59&hm=b512e4f444bd901b30d02fffc207457cf8312943dc1f87266eb1dbc692f4c437&F"
 }
