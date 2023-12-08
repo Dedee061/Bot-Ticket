@@ -1,23 +1,30 @@
+/*
+╔╗╔╗─╦╔╗-╦─╔╗╔╦╗-╗╔╦╔╗╦─╦╔╗
+╚╗╠─╦║╠║-╠╗╠─║║║-║║║║║║╔║║║
+╚╝╚╝╚╝╩╩-╚╝╚╝╩─╩-╚╝╩╩╚╝╚╝╚╝
+
+instagram: @dedee_png
+instagram: @dedee_061
+Discord: gtaobrabo
+*/
+
+
+
+
+
+
+
+
 const {
   Client,
   GatewayIntentBits,
   Partials,
   EmbedBuilder,
   PermissionFlagsBits,
-  ApplicationCommandOptionType,
-  ActivityType,
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
-  ChannelType,
-  Status,
-  SelectMenuBuilder,
-  StringSelectMenuBuilder,
-  WebhookClient,
-  ModalBuilder,
-  TextInputBuilder,
-  TextInputStyle,
-  Collection,
+
   channelLink,
 } = require("discord.js");
 
