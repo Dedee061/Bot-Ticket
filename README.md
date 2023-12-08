@@ -3,6 +3,11 @@ ticket bot for discord
 
 # Bot de ticket para o discord desenvolvidor por mim 
 
-# BOT EM DESENVOLVIMENTO
+╔╗╔╗─╦╔╗-╦─╔╗╔╦╗-╗╔╦╔╗╦─╦╔╗
+╚╗╠─╦║╠║-╠╗╠─║║║-║║║║║║╔║║║
+╚╝╚╝╚╝╩╩-╚╝╚╝╩─╩-╚╝╩╩╚╝╚╝╚╝
 
-discord: @gtaobrabo
+instagram: @dedee_png
+instagram: @dedee_061
+Discord: gtaobrabo
+
